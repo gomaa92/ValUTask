@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+}
+
+apply from: 'dependencies.gradle'
+
+
+android {
+    compileSdkVersion 32
+    defaultConfig {
+        applicationId "com.weightwatchers.ww_exercise_01"
+        minSdkVersion 26
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
+    testOptions {
+        // Used for Unit testing Android dependent elements in /test folder
+        unitTests.includeAndroidResources  = true
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.0.9"
+    implementation ui.values()
+    implementation lifeCycle.values()
+    implementation hiltDependencieyInjection.values()
+    implementation navigation.values()
+    implementation ktx.values()
+    annotationProcessor annotationProcessor.values()
+    kapt kaptDI.values()
+    implementation gsonParser.values()
+    implementation retrofitNetworking.values()
+    implementation glideImageLoader.values()
+    implementation androidTestImpUnitTest.values()
+    implementation testImpUnitTest.values()
+    implementation mock.values()
+}
+kapt {
+    correctErrorTypes true
+}

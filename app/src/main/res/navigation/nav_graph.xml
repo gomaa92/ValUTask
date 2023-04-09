@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listProductsFragment">
+
+    <fragment
+        android:id="@+id/listProductsFragment"
+        android:name="com.valu.exercise_01.feature.listproducts.presentation.view.fragment.ListProductsFragment"
+        android:label="ListProductsFragment"
+        tools:layout="@layout/fragment_list_products">
+        <action
+            android:id="@+id/action_listProductsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.valu.exercise_01.feature.product_detais.presentation.fragments.ProductDetailsFragment"
+        android:label="ProductDetailsFragment"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="product_key"
+            app:argType="com.valu.exercise_01.feature.listproducts.data.model.Product" />
+    </fragment>
+</navigation>
